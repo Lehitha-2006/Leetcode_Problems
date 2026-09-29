@@ -10,19 +10,16 @@
  */
 class Solution {
     public ListNode middleNode(ListNode head) {
-        //Naive Approach
-        //Middle is just len(linkedlist) 
-        //Find length , find length
-        int length = 0;
-        ListNode temp = head;
-        while(temp != null) { temp = temp.next ; length++;}
-        int middle = length/2;
-        //Traverse again the middle times to land on middle
-        temp = head;
-        while(middle>0){
-            temp = temp.next;
-            middle--;
+        //Implementation using Hare & tortoise algorithm (Fast & slow pointer)
+        ListNode slow,fast;
+        slow = head;
+        fast = head;
+        while(fast != null && fast.next != null){
+            //prove slow pointer 1 step at a time
+            slow = slow.next;
+            //prove fast pointer 2 steps at a time
+            fast = fast.next.next;
         }
-        return temp;
+        return slow;
     }
 }
