@@ -18,13 +18,15 @@ public:
             lst.push_back(temp->val);
             temp = temp->next;
         }
-        temp = head;
-
-        for(int i = lst.size()-1; i>= 0 ; i--){
-            if(temp->val != lst[i]){
+        
+        int left = 0;
+        int right = lst.size() - 1;
+        while(left<right){
+            if(lst[left] != lst[right]){
                 return false;
             }
-            temp = temp->next;
+            right--;
+            left++;
         }
         return true;
     }
